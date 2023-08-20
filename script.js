@@ -182,7 +182,7 @@ function animateImagesOnScroll() {
 // Panggil fungsi animateImagesOnScroll saat halaman dimuat dan saat scroll
 window.addEventListener("load", animateImagesOnScroll);
 window.addEventListener("scroll", animateImagesOnScroll); */
-
+//=========================================================================================
 // Animation Slide Down Category
 document.addEventListener("DOMContentLoaded", function () {
   const cardImages = document.querySelectorAll(".card .img");
@@ -206,6 +206,36 @@ document.addEventListener("DOMContentLoaded", function () {
   toggleAnimation();
   window.addEventListener("scroll", toggleAnimation);
 });
+
+function isElementInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+/* function resetAnimation(element) {
+  element.style.animation = ""; // Reset the animation
+} */
+
+function handleScrollAnimation() {
+  const cardImages = document.querySelectorAll(".card .img");
+  cardImages.forEach((element) => {
+    if (isElementInViewport(element)) {
+      element.classList.add("animate-img-category");
+    } /* else {
+      resetAnimation(element);
+    } */
+  });
+}
+
+// Attach the event listener to scroll event
+window.addEventListener("scroll", handleScrollAnimation);
+
 //=========================================================================================
 // Animation Number Increment
 const bars = document.querySelectorAll(".bar-5");
@@ -295,11 +325,4 @@ const categorySection = document.getElementById("category-section");
 // Remove the disable-interaction class after 5 seconds (5000 milliseconds)
 setTimeout(() => {
   categorySection.classList.remove("disable-interaction");
-}, 2000);
-
-const categoryImageSection = document.getElementById("img");
-
-// Remove the disable-interaction class after 5 seconds (5000 milliseconds)
-setTimeout(() => {
-  categoryImageSection.classList.remove("img-black");
 }, 2000);

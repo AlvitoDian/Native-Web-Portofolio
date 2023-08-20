@@ -3,6 +3,7 @@
   <head>
     <title>Main Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="assets\image\logo.png" type="image/x-icon" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="assets\styles\index.css" rel="stylesheet" />
   </head>
@@ -13,7 +14,7 @@
       <div class="navbar">
         <a class="logo" href="#"
           ><img
-            src="assets\image\logoRevo.png"
+            src="assets\image\logo.png"
             class="logo-rotate"
             width="40"
             height="40"
@@ -25,9 +26,9 @@
         </div>
         <ul class="menu">
           <li><a href="index.html">Home</a></li>
-          <li><a href="profile.html">Our Profile</a></li>
-          <li><a href="#">Portofolio</a></li>
-          <li><a href="#">Message Us</a></li>
+          <li><a href="profile.html">Skill</a></li>
+          <li><a href="#">Experience</a></li>
+          <li><a href="#">Message Me</a></li>
         </ul>
       </div>
     </nav>
@@ -45,68 +46,76 @@
     <!-- Hero Section End -->
 
     <!-- Category Section -->
-    <section class="category" id="category-section">
+    <section class="category disable-interaction" id="category-section">
       <div class="wrapper">
         <div class="title">
-          <h2 data-aos="zoom-out" data-aos-delay="150">Whatever's in Here !</h2>
+          <h2 data-aos="fade-down" data-aos-delay="1000">
+            What Do You Need From Me ?
+          </h2>
         </div>
         <ul class="carousel">
           <li class="card">
-            <div class="img" data-aos="fade-down" data-aos-delay="100">
-              <img src="assets\image\car1.png" alt="img" draggable="false" />
+            <div id="img" class="img" style="--delay: 1.8s">
+              <img
+                src="assets\image\car1.png"
+                alt="img"
+                draggable="false"
+                id="img-card"
+                class="fade-black-animation"
+              />
               <!-- Img Source : https://www.pngegg.com/en/png-eomnk -->
             </div>
             <div class="overlay">
               <h2>About Me</h2>
               <span
-                >Want to see more details?,
-                <a href="" style="text-decoration: none">Click here !</a></span
+                >Want to see more details ?,
+                <a href="" style="text-decoration: none">Click here!</a></span
               >
             </div>
           </li>
 
           <li class="card">
-            <div class="img" data-aos="fade-down" data-aos-delay="200">
+            <div class="img" style="--delay: 1.8s">
               <img src="assets\image\car2.png" alt="img" draggable="false" />
               <!-- Img Source : https://www.pngegg.com/en/png-ncxxj -->
             </div>
             <div class="overlay">
               <h2>My Skills</h2>
               <span
-                >Want to see more details?,
+                >Want to see more details ?,
                 <a href="#skill" style="text-decoration: none"
-                  >Click here !</a
+                  >Click here!</a
                 ></span
               >
             </div>
           </li>
 
           <li class="card">
-            <div class="img" data-aos="fade-down" data-aos-delay="300">
+            <div class="img" style="--delay: 1.8s">
               <img src="assets\image\car3.png" alt="img" draggable="false" />
               <!-- Image Source : https://www.pngegg.com/en/png-ojqyi -->
             </div>
             <div class="overlay">
               <h2>Some of My Work Experience</h2>
               <span
-                >Want to see more details?,
+                >Want to see more details ?,
                 <a href="#experience" style="text-decoration: none"
-                  >Click here !</a
+                  >Click here!</a
                 ></span
               >
             </div>
           </li>
 
           <li class="card">
-            <div class="img" data-aos="fade-down" data-aos-delay="400">
+            <div class="img" style="--delay: 1.8s">
               <img src="assets\image\car4.png" alt="img" draggable="false" />
               <!-- Image Source : https://www.pngegg.com/en/png-kftdp -->
             </div>
             <div class="overlay">
               <h2>Some of My Portfolio</h2>
               <span
-                >Want to see more details?,
-                <a href="" style="text-decoration: none">Click here !</a></span
+                >Want to see more details ?,
+                <a href="" style="text-decoration: none">Click here!</a></span
               >
             </div>
           </li>
@@ -269,76 +278,51 @@
 
     <!-- Project Section -->
     <section class="crew">
-      <h2>My Recent Project</h2>
+      <h2 data-aos="fade-right" data-aos-delay="100">My Recent Project</h2>
       <div class="container-crew">
         <div class="column-crew" data-aos="zoom-out" data-aos-delay="100">
           <div class="staff-item">
-            <img src="assets\image\hero.jpg" alt="Staff 1" />
+            <img src="assets\image\p1.png" alt="Staff 1" />
             <a href="">
-              <h3>Jakarta</h3>
+              <h3>Web Bassed Image Classification</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ut
-                in delectus voluptates odio adipisci!
+                A web-based application for ready-made image classification that
+                only configures the model.
               </p>
             </a>
           </div>
         </div>
         <div class="column-crew" data-aos="zoom-out" data-aos-delay="200">
           <div class="staff-item">
-            <img src="assets\image\db.png" alt="Staff 1" />
+            <img src="assets\image\p2.png" alt="Staff 1" />
             <a href="">
-              <h3>Jakarta</h3>
+              <h3>GAMEKU - Online Games Items E-Commerce With Multi Vendor</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ut
-                in delectus voluptates odio adipisci!
+                E-commerce application made specifically to facilitate easy and
+                comfortable transaction of game items.
               </p>
             </a>
           </div>
         </div>
         <div class="column-crew" data-aos="zoom-out" data-aos-delay="300">
           <div class="staff-item">
-            <img src="assets\image\hero.jpg" alt="Staff 1" />
+            <img src="assets\image\p3.png" alt="Staff 1" />
             <a href="">
-              <h3>Jakarta</h3>
+              <h3>Dynamic School Web Profile</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ut
-                in delectus voluptates odio adipisci!
+                Web Profile for interactive schools with admin access rights
+                that manage all the news in it.
               </p>
             </a>
           </div>
         </div>
         <div class="column-crew" data-aos="zoom-out" data-aos-delay="300">
           <div class="staff-item">
-            <img src="assets\image\hero.jpg" alt="Staff 1" />
+            <img src="assets\image\p4.png" alt="Staff 1" />
             <a href="">
-              <h3>Jakarta</h3>
+              <h3>Simple CRUD using MVC Concept</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ut
-                in delectus voluptates odio adipisci!
-              </p>
-            </a>
-          </div>
-        </div>
-        <div class="column-crew" data-aos="zoom-out" data-aos-delay="300">
-          <div class="staff-item">
-            <img src="assets\image\hero.jpg" alt="Staff 1" />
-            <a href="">
-              <h3>Jakarta</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ut
-                in delectus voluptates odio adipisci!
-              </p>
-            </a>
-          </div>
-        </div>
-        <div class="column-crew" data-aos="zoom-out" data-aos-delay="400">
-          <div class="staff-item">
-            <img src="assets\image\db.png" alt="Staff 1" />
-            <a href="">
-              <h3>Jakarta</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ut
-                in delectus voluptates odio adipisci!
+                A very simple web-based application for managing student data.
               </p>
             </a>
           </div>
@@ -350,7 +334,7 @@
     <!-- Contact Us Section -->
     <section class="contactus">
       <div class="container-contact">
-        <div class="column">
+        <div class="column" data-aos="flip-up" data-aos-delay="300">
           <h2>Message Us</h2>
           <form class="contact-form" action="" method="post" id="contactForm">
             <div class="form-group">
@@ -371,7 +355,7 @@
           </form>
         </div>
 
-        <div class="column">
+        <div class="column" data-aos="flip-up" data-aos-delay="500">
           <h2>Recent Comments :</h2>
           <!-- <div class="comment">
             <h4>Rudi Galon</h4>

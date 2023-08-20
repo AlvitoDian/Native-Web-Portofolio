@@ -156,7 +156,7 @@ carousel.addEventListener("scroll", infiniteScroll);
 wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 wrapper.addEventListener("mouseleave", autoPlay);
 
-// Animasi Slide Up
+/* // Animasi Slide Up
 // Fungsi untuk memeriksa apakah elemen masuk ke dalam viewport
 function isElementInViewport(element) {
   const rect = element.getBoundingClientRect();
@@ -181,10 +181,33 @@ function animateImagesOnScroll() {
 
 // Panggil fungsi animateImagesOnScroll saat halaman dimuat dan saat scroll
 window.addEventListener("load", animateImagesOnScroll);
-window.addEventListener("scroll", animateImagesOnScroll);
+window.addEventListener("scroll", animateImagesOnScroll); */
 
+// Animation Slide Down Category
+document.addEventListener("DOMContentLoaded", function () {
+  const cardImages = document.querySelectorAll(".card .img");
+
+  // Function to check if an element is in the viewport
+  function isElementInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return rect.top <= window.innerHeight && rect.bottom >= 0;
+  }
+
+  // Function to toggle the animation class
+  function toggleAnimation() {
+    cardImages.forEach((img) => {
+      if (isElementInViewport(img)) {
+        img.classList.add("animate-img-category");
+      }
+    });
+  }
+
+  // Initial check and scroll event listener
+  toggleAnimation();
+  window.addEventListener("scroll", toggleAnimation);
+});
+//=========================================================================================
 // Animation Number Increment
-// Simpan semua elemen bar dalam variabel
 const bars = document.querySelectorAll(".bar-5");
 
 // Fungsi untuk mengatur ulang animasi pada elemen bar
@@ -193,42 +216,47 @@ function resetAnimation(bar) {
   bar.querySelector("h5").textContent = "0%";
 }
 
-// Fungsi untuk mengaktifkan animasi ketika elemen masuk ke viewport
-function handleIntersection(entries) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const bar = entry.target;
-      resetAnimation(bar);
-      const width = parseFloat(bar.style.getPropertyValue("--width")) || 0;
-      const duration = 1000; // Durasi animasi dalam milidetik
-      const interval = 10; // Interval untuk mengupdate animasi dalam milidetik
-      const increment = (width * interval) / duration;
-      let currentWidth = 0;
+// Fungsi untuk mengaktifkan animasi pada elemen bar
+function animateBar(bar) {
+  const width = parseFloat(bar.style.getPropertyValue("--width")) || 0;
+  const duration = 1150; // Durasi animasi dalam milidetik
+  const interval = 10; // Interval untuk mengupdate animasi dalam milidetik
+  const increment = (width * interval) / duration;
+  let currentWidth = 0;
 
-      function updateWidth() {
-        if (currentWidth < width) {
-          currentWidth += increment;
-          bar.style.width = currentWidth + "%";
-          bar.querySelector("h5").textContent = Math.round(currentWidth) + "%";
-          requestAnimationFrame(updateWidth);
-        }
-      }
-
-      updateWidth();
+  function updateWidth() {
+    if (currentWidth < width) {
+      currentWidth += increment;
+      bar.style.width = currentWidth + "%";
+      bar.querySelector("h5").textContent = Math.round(currentWidth) + "%";
+      requestAnimationFrame(updateWidth);
     }
-  });
+  }
+
+  updateWidth();
 }
 
 // Buat observer untuk memantau masuknya elemen ke viewport
-const observer = new IntersectionObserver(handleIntersection, {
-  threshold: 0.5,
-});
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        resetAnimation(bar);
+        animateBar(bar);
+        observer.unobserve(bar); // Hentikan pengamatan setelah animasi terpicu
+      }
+    });
+  },
+  { threshold: 1 }
+);
 
 // Tambahkan observer pada setiap elemen bar
 bars.forEach((bar) => {
   observer.observe(bar);
 });
 
+//=========================================================================================
 // Viewport Bar Animation Trigger
 function isElementInViewport(element) {
   const rect = element.getBoundingClientRect();
@@ -241,20 +269,37 @@ function isElementInViewport(element) {
   );
 }
 
-function resetAnimation(element) {
+/* function resetAnimation(element) {
   element.style.animation = ""; // Reset the animation
-}
+} */
 
 function handleScrollAnimation() {
   const elements = document.querySelectorAll(".bar-5");
   elements.forEach((element) => {
     if (isElementInViewport(element)) {
       element.style.animation = "moveRight 2s ease-out forwards";
-    } else {
+    } /* else {
       resetAnimation(element);
-    }
+    } */
   });
 }
 
 // Attach the event listener to scroll event
 window.addEventListener("scroll", handleScrollAnimation);
+
+//=========================================================================================
+// Disable Interaction Temporary
+// Get the category section element
+const categorySection = document.getElementById("category-section");
+
+// Remove the disable-interaction class after 5 seconds (5000 milliseconds)
+setTimeout(() => {
+  categorySection.classList.remove("disable-interaction");
+}, 2000);
+
+const categoryImageSection = document.getElementById("img");
+
+// Remove the disable-interaction class after 5 seconds (5000 milliseconds)
+setTimeout(() => {
+  categoryImageSection.classList.remove("img-black");
+}, 2000);

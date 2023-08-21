@@ -182,6 +182,16 @@ function animateImagesOnScroll() {
 // Panggil fungsi animateImagesOnScroll saat halaman dimuat dan saat scroll
 window.addEventListener("load", animateImagesOnScroll);
 window.addEventListener("scroll", animateImagesOnScroll); */
+
+//=========================================================================================
+// Disable Interaction Temporary
+function enableInteractionAfterDelay(elementId, className, delay) {
+  const element = document.getElementById(elementId);
+
+  setTimeout(() => {
+    element.classList.remove(className);
+  }, delay);
+}
 //=========================================================================================
 // Animation Slide Down Category
 document.addEventListener("DOMContentLoaded", function () {
@@ -198,6 +208,11 @@ document.addEventListener("DOMContentLoaded", function () {
     cardImages.forEach((img) => {
       if (isElementInViewport(img)) {
         img.classList.add("animate-img-category");
+        enableInteractionAfterDelay(
+          "category-section",
+          "disable-interaction",
+          2000
+        );
       }
     });
   }
@@ -227,6 +242,11 @@ function handleScrollAnimation() {
   cardImages.forEach((element) => {
     if (isElementInViewport(element)) {
       element.classList.add("animate-img-category");
+      enableInteractionAfterDelay(
+        "category-section",
+        "disable-interaction",
+        2000
+      );
     } /* else {
       resetAnimation(element);
     } */
@@ -300,7 +320,7 @@ function isElementInViewport(element) {
 }
 
 /* function resetAnimation(element) {
-  element.style.animation = ""; // Reset the animation
+    element.style.animation = ""; // Reset the animation
 } */
 
 function handleScrollAnimation() {
@@ -318,11 +338,29 @@ function handleScrollAnimation() {
 window.addEventListener("scroll", handleScrollAnimation);
 
 //=========================================================================================
-// Disable Interaction Temporary
-// Get the category section element
-const categorySection = document.getElementById("category-section");
+// Music Play Handle
+const playIcon = document.getElementById("playIcon");
+const audio = new Audio("assets/music/music.mp3");
 
-// Remove the disable-interaction class after 5 seconds (5000 milliseconds)
-setTimeout(() => {
-  categorySection.classList.remove("disable-interaction");
-}, 2000);
+let isPlaying = false;
+
+playIcon.addEventListener("click", () => {
+  isPlaying = !isPlaying;
+  if (isPlaying) {
+    playIcon.classList.add("zoom-in");
+    setTimeout(() => {
+      playIcon.classList.remove("zoom-in");
+    }, 300);
+    playIcon.classList.remove("fa-circle-play");
+    playIcon.classList.add("fa-circle-pause");
+    audio.play();
+  } else {
+    playIcon.classList.add("zoom-in");
+    setTimeout(() => {
+      playIcon.classList.remove("zoom-in");
+    }, 300);
+    playIcon.classList.remove("fa-circle-pause");
+    playIcon.classList.add("fa-circle-play");
+    audio.pause();
+  }
+});

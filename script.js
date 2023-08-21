@@ -340,6 +340,9 @@ window.addEventListener("scroll", handleScrollAnimation);
 //=========================================================================================
 // Music Play Handle
 const playIcon = document.getElementById("playIcon");
+const musicBar = document.getElementById("musicBar");
+const musicTitle = document.getElementById("musicTitle");
+const musicCdContainer = document.querySelector(".music-cd");
 const audio = new Audio("assets/music/music.mp3");
 
 let isPlaying = false;
@@ -353,6 +356,13 @@ playIcon.addEventListener("click", () => {
     }, 300);
     playIcon.classList.remove("fa-circle-play");
     playIcon.classList.add("fa-circle-pause");
+    musicBar.classList.add("music-play");
+    setTimeout(() => {
+      musicCdContainer.classList.toggle("active");
+    }, 400);
+    setTimeout(() => {
+      musicTitle.classList.toggle("active");
+    }, 400);
     audio.play();
   } else {
     playIcon.classList.add("zoom-in");
@@ -360,7 +370,12 @@ playIcon.addEventListener("click", () => {
       playIcon.classList.remove("zoom-in");
     }, 300);
     playIcon.classList.remove("fa-circle-pause");
+    setTimeout(() => {
+      musicBar.classList.remove("music-play");
+    }, 200);
     playIcon.classList.add("fa-circle-play");
+    musicCdContainer.classList.remove("active");
+    musicTitle.classList.remove("active");
     audio.pause();
   }
 });

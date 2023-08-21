@@ -215,23 +215,81 @@ nav {
   right: 20px;
   background-color: #f9d731;
   padding: 10px;
-  border-radius: 30px;
-  width: 50px;
-  height: 50px;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   z-index: 3;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   font-size: 30px;
   transition: transform 0.3s ease-in-out;
+  transition: width 0.5s ease-in-out;
+}
+.floating-box.music-play {
+  width: 250px;
+  height: 40px;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.music-desc {
+  opacity: 0%;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.music-desc.active {
+  opacity: 100%;
+}
+
+.box-text {
+  margin-right: 10px;
+  color: #000000;
+  font-size: 10px;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.box-description {
+  font-size: 8px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  color: #575757;
 }
 
 .icon-play {
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   color: #ffffff;
   transition: transform 0.3s ease-in-out;
+}
+
+.music-cd {
+  padding-bottom: 40px;
+  margin-right: 20px;
+  transform: translateY(30%);
+  transform: scale(0.5);
+  opacity: 0%;
+  transition: transform 0.2s ease-in-out, opacity 0.1s ease-in-out;
+  font-size: 0;
+}
+.music-cd.active {
+  display: block;
+  transform: translateY(0%);
+  transform: scale(1);
+  opacity: 100%;
+  font-size: 20px;
+  z-index: -3;
+}
+
+.image-cd {
+  background-color: #f9d731;
+  width: 70px;
+  border-radius: 100%;
+  animation: rotate 8s linear infinite;
+  padding: 10px;
 }
 
 .icon-play.zoom-in {
@@ -259,21 +317,43 @@ nav {
     padding: 10px;
     border-radius: 20px;
     width: 30px;
-    height: 30px;
+    height: 35px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     z-index: 3;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     font-size: 25px;
     transition: transform 0.3s ease-in-out;
+    transition: width 0.5s ease-in-out;
   }
 
+  .floating-box.music-play {
+    width: 250px;
+    height: 35px;
+    justify-content: flex-end;
+    padding: 10px;
+  }
   .icon-play {
-    padding: 0px;
+    padding: 3px;
     cursor: pointer;
     color: #ffffff;
     transition: transform 0.3s ease-in-out;
+  }
+
+  .box-text {
+    margin-right: 10px;
+    color: #000000;
+    font-size: 10px;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  .box-description {
+    font-size: 8px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    color: #575757;
   }
 }
 /* Music Button Section End */

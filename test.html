@@ -3,107 +3,169 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Icon Toggle with Animation</title>
-    <style>
-      .floating-box {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #f9d731;
-        padding: 10px;
-        border-radius: 30px;
-        width: 50px;
-        height: 50px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        z-index: 3;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: 30px;
-        transition: transform 0.3s ease-in-out;
-      }
-
-      .icon-play {
-        padding: 10px;
-        cursor: pointer;
-        transition: transform 0.3s ease-in-out;
-      }
-
-      .icon-play.zoom-in {
-        animation: zoomIn 0.3s ease-in-out;
-      }
-
-      @keyframes zoomIn {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.2);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Spinning Border Image</title>
   </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+    :root {
+      --strokeWeight: 6px;
+      --containerSize: 256px;
+      --red: #e00712;
+      --green: #01953f;
+      --yellow: #ffcc03;
+      --blue: #005daa;
+    }
+
+    html,
+    body {
+      font-family: "Poppins", serif;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+    }
+
+    .wrapper {
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: var(--containerSize);
+      height: var(--containerSize);
+    }
+
+    .outer-box,
+    .inner-box,
+    .inner-box:after,
+    .inner-box:before {
+      display: block;
+      position: absolute;
+      margin: calc(var(--strokeWeight) * -1); /* same size as border */
+      /* margin: 0px;   there is a shift without */
+      padding: 0;
+      border: var(--strokeWeight) solid transparent;
+      border-color: rgba(128, 128, 128, 0.035);
+      border-radius: 50%;
+      animation: spinning 24s ease-in infinite;
+      /*animation-fill-mode: both;*/
+      transform: translate3d(0, 0, 0);
+      content: "";
+    }
+
+    .outer-box {
+      width: calc(var(--containerSize) - (var(--strokeWeight) * 2));
+      height: calc(var(--containerSize) - (var(--strokeWeight) * 2));
+      left: var(--strokeWeight);
+      top: var(--strokeWeight);
+      border-bottom-color: var(--red);
+      animation-delay: -2.7s;
+      animation-duration: 29s;
+      animation-direction: reverse;
+    }
+
+    .inner-box {
+      border-color: rgba(128, 128, 128, 0.035);
+      width: calc(var(--containerSize) - (var(--strokeWeight) * 10));
+      height: calc(var(--containerSize) - (var(--strokeWeight) * 10));
+      left: calc(var(--strokeWeight) * 4);
+      top: calc(var(--strokeWeight) * 4);
+      border-left-color: var(--green);
+      animation-delay: -3.2s;
+      animation-duration: 21s;
+    }
+
+    .inner-box:before {
+      border-color: rgba(128, 128, 128, 0.035);
+      width: calc(var(--containerSize) - (var(--strokeWeight) * 6));
+      height: calc(var(--containerSize) - (var(--strokeWeight) * 6));
+      left: calc(var(--strokeWeight) * -2);
+      top: calc(var(--strokeWeight) * -2);
+      border-top-color: var(--yellow);
+      animation-delay: -1.9s;
+      animation-duration: 24s;
+      animation-direction: alternate-reverse;
+    }
+
+    .inner-box:after {
+      border-color: rgba(128, 128, 128, 0.035);
+      width: calc(var(--containerSize) - (var(--strokeWeight) * 14));
+      height: calc(var(--containerSize) - (var(--strokeWeight) * 14));
+      left: calc(var(--strokeWeight) * 2);
+      top: calc(var(--strokeWeight) * 2);
+      border-right-color: var(--blue);
+      animation-delay: -2.6s;
+      animation-duration: 19s;
+      animation-direction: reverse;
+    }
+
+    .heading {
+      position: absolute;
+      text-align: center;
+      width: calc(var(--containerSize) - (var(--strokeWeight) * 16));
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+    }
+
+    /****************************************************************/
+
+    @keyframes spinning {
+      0% {
+        -webkit-transform: rotate(0deg); /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg); /* IE 9 */
+        transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+      }
+
+      50% {
+        -webkit-transform: rotate(360deg); /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg); /* IE 9 */
+        transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+      }
+
+      100% {
+        -webkit-transform: rotate(720deg); /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(720deg); /* IE 9 */
+        transform: rotate(720deg); /* Firefox 16+, IE 10+, Opera */
+      }
+    }
+
+    @-webkit-keyframes spinning {
+      0% {
+        -webkit-transform: rotate(0deg); /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg); /* IE 9 */
+        transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+      }
+
+      50% {
+        -webkit-transform: rotate(360deg); /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg); /* IE 9 */
+        transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+      }
+
+      100% {
+        -webkit-transform: rotate(720deg); /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(720deg); /* IE 9 */
+        transform: rotate(720deg); /* Firefox 16+, IE 10+, Opera */
+      }
+    }
+  </style>
   <body>
-    <div class="floating-box">
-      <i class="fas fa-circle-play icon-play" id="playIcon"></i>
+    <div class="wrapper">
+      <div class="container">
+        <strong class="heading">Gewerbliche Berufsschule Chur</strong>
+        <div class="outer-box"><div class="inner-box"></div></div>
+      </div>
     </div>
-    <script>
-      const playIcon = document.getElementById("playIcon");
-      const audio = new Audio("assets/music/music.mp3");
-
-      let isPlaying = false;
-
-      playIcon.addEventListener("click", () => {
-        isPlaying = !isPlaying;
-        if (isPlaying) {
-          playIcon.classList.add("zoom-in");
-          setTimeout(() => {
-            playIcon.classList.remove("zoom-in");
-          }, 300);
-          playIcon.classList.remove("fa-circle-play");
-          playIcon.classList.add("fa-circle-pause");
-          audio.play();
-        } else {
-          playIcon.classList.add("zoom-in");
-          setTimeout(() => {
-            playIcon.classList.remove("zoom-in");
-          }, 300);
-          playIcon.classList.remove("fa-circle-pause");
-          playIcon.classList.add("fa-circle-play");
-          audio.pause();
-        }
-      });
-      /*   playIcon.addEventListener("click", () => {
-        isPlaying = !isPlaying;
-        if (isPlaying) {
-          playIcon.classList.add("zoom-in");
-          playIcon.classList.remove("fa-circle-play");
-          playIcon.classList.add("fa-circle-pause");
-          audio.play();
-        } else {
-          playIcon.classList.remove("zoom-in");
-          playIcon.classList.remove("fa-circle-pause");
-          playIcon.classList.add("fa-circle-play");
-          audio.pause();
-        }
-      }); */
-
-      /* playIcon.addEventListener("click", () => {
-        playIcon.classList.add("zoom-in");
-        setTimeout(() => {
-          playIcon.classList.remove("zoom-in");
-        }, 300);
-      }); */
-    </script>
   </body>
 </html>

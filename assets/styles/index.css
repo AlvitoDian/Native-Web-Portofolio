@@ -603,6 +603,7 @@ nav {
 /* About Me Section */
 .aboutme {
   padding: 70px;
+  overflow: hidden;
 }
 
 .profile-container {

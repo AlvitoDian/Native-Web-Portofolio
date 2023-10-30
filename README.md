@@ -1,6 +1,6 @@
 ﻿# Native-Web-Portofolio
 
 
- 40% On Progress
+My Simple Portofolio's Web
 
  https://vits-main.vercel.app/
